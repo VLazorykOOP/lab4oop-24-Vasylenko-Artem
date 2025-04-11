@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "class/vector.h"
 
 using namespace std;
 
@@ -132,7 +132,7 @@ Vector<T> Vector<T>::operator-=(const Vector &other)
 		return *this;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] -= other.data[i];
 	return *this;
 }
@@ -140,7 +140,7 @@ Vector<T> Vector<T>::operator-=(const Vector &other)
 template <typename T>
 Vector<T> Vector<T>::operator*=(const int &other)
 {
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] *= other;
 	return *this;
 }
@@ -148,7 +148,7 @@ Vector<T> Vector<T>::operator*=(const int &other)
 template <typename T>
 Vector<T> Vector<T>::operator/=(const int &other)
 {
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] /= other;
 	return *this;
 }
@@ -156,7 +156,7 @@ Vector<T> Vector<T>::operator/=(const int &other)
 template <typename T>
 Vector<T> Vector<T>::operator%=(const int &other)
 {
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] %= other;
 	return *this;
 }
@@ -171,7 +171,7 @@ Vector<T> Vector<T>::operator|=(const Vector &other)
 		return *this;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] |= other.data[i];
 	return *this;
 }
@@ -186,7 +186,7 @@ Vector<T> Vector<T>::operator^=(const Vector &other)
 		return *this;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] ^= other.data[i];
 	return *this;
 }
@@ -201,7 +201,7 @@ Vector<T> Vector<T>::operator&=(const Vector &other)
 		return *this;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		data[i] &= other.data[i];
 	return *this;
 }
@@ -217,7 +217,7 @@ Vector<T> Vector<T>::operator+(const Vector &other)
 		return temp;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] + other.data[i];
 	return temp;
 }
@@ -233,7 +233,7 @@ Vector<T> Vector<T>::operator-(const Vector &other)
 		return temp;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] - other.data[i];
 	return temp;
 }
@@ -242,7 +242,7 @@ template <typename T>
 Vector<T> Vector<T>::operator*(const int &other)
 {
 	Vector temp(size);
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] * other;
 	return temp;
 }
@@ -251,7 +251,7 @@ template <typename T>
 Vector<T> Vector<T>::operator/(const int &other)
 {
 	Vector temp(size);
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] / other;
 	return temp;
 }
@@ -260,7 +260,7 @@ template <typename T>
 Vector<T> Vector<T>::operator%(const int &other)
 {
 	Vector temp(size);
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] % other;
 	return temp;
 }
@@ -276,7 +276,7 @@ Vector<T> Vector<T>::operator|(const Vector &other)
 		return temp;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] | other.data[i];
 	return temp;
 }
@@ -292,7 +292,7 @@ Vector<T> Vector<T>::operator^(const Vector &other)
 		return temp;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] ^ other.data[i];
 	return temp;
 }
@@ -308,9 +308,49 @@ Vector<T> Vector<T>::operator&(const Vector &other)
 		return temp;
 	}
 
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		temp.data[i] = data[i] & other.data[i];
 	return temp;
+}
+
+template <typename T>
+Vector<T> &Vector<T>::operator<<(const int &other)
+{
+	for (size_t i = 0; i < size; i++)
+		data[i] <<= other;
+	return *this;
+}
+
+template <typename T>
+Vector<T> &Vector<T>::operator>>(const int &other)
+{
+	for (size_t i = 0; i < size; i++)
+		data[i] >>= other;
+	return *this;
+}
+
+template <typename T>
+T &Vector<T>::operator[](size_t index)
+{
+	if (index >= size)
+	{
+		codeError = 3;
+		static T dummy{};
+		return dummy;
+	}
+	return data[index];
+}
+
+template <typename T>
+const T &Vector<T>::operator[](size_t index) const
+{
+	if (index >= size)
+	{
+		codeError = 3;
+		static T dummy{};
+		return dummy;
+	}
+	return data[index];
 }
 
 template <typename T>

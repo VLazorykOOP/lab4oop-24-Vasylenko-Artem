@@ -2,7 +2,7 @@
 
 #include "console.h"
 #include "taskManager.h"
-#include "vector.h"
+#include "class/vector.h"
 
 // Створити тип даних - клас VectorInt(вектор цілих чисел), який має вказівник на int,
 // число елементів size і змінну стану codeError.У класі визначити
@@ -126,4 +126,12 @@ void task_01()
 	v5 &= v3;
 	cout << "v5 &= v2: " << endl;
 	v5.print();
+
+	v5 << 3;
+	cout << "v5 << 3: " << endl;
+	v5.print();
+
+	const int x = v5[0];
+
+	cout << "x: " << x << endl;
 }

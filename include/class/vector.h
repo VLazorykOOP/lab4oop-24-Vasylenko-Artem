@@ -22,6 +22,8 @@ public:
 
 	~Vector();
 
+	Vector operator[](size_t index) const;
+
 	Vector &operator++();
 	Vector operator++(int);
 	Vector &operator--();
@@ -53,6 +55,11 @@ public:
 	Vector operator|(const Vector &other);
 	Vector operator^(const Vector &other);
 	Vector operator&(const Vector &other);
+
+	Vector &operator<<(const int &other);
+	Vector &operator>>(const int &other);
+
+	T &operator[](size_t index);
 
 	void print() const;
 };
