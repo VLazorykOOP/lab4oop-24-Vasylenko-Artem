@@ -3,7 +3,13 @@
 using namespace std;
 
 template <typename T>
-Vector<T>::Vector(size_t n) : size(n) { data = new T[size]; }
+Vector<T>::Vector() : size(1) { data = new T[size]; }
+
+template <typename T>
+Vector<T>::Vector(size_t n) : size(n)
+{
+	data = new T[size];
+}
 
 template <typename T>
 Vector<T>::Vector(size_t n, T value) : size(n)
@@ -16,6 +22,7 @@ Vector<T>::Vector(size_t n, T value) : size(n)
 template <typename T>
 Vector<T>::Vector(const Vector &other) : size(other.size)
 {
+	data = new T[size];
 	for (size_t i = 0; i < other.size; i++)
 		data[i] = other.data[i];
 }
@@ -24,101 +31,36 @@ template <typename T>
 Vector<T>::~Vector() { delete[] data; }
 
 template <typename T>
-void Vector<T>::print() const
+Vector<T> &Vector<T>::operator++()
 {
 	for (size_t i = 0; i < size; i++)
-		cout << data[i] << " ";
-	cout << endl;
+		++data[i];
+	return *this;
 }
 
-// using namespace std;
+template <typename T>
+Vector<T> Vector<T>::operator++(int)
+{
+	Vector temp(*this);
+	++(*this);
+	return temp;
+}
 
-// template <typename T>
-// Vector<T>::Vector() : size(1), codeError(0)
-// {
-// 	data = new (nothrow) T[size];
-// 	if (!data)
-// 	{
-// 		codeError = 2;
-// 		return;
-// 	}
-// }
+template <typename T>
+Vector<T> &Vector<T>::operator--()
+{
+	for (int i = 0; i < size; ++i)
+		--data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T>::Vector(int n) : size(n), codeError(0)
-// {
-// 	data = new (nothrow) T[size];
-// 	if (!data)
-// 	{
-// 		codeError = 2;
-// 		return;
-// 	}
-
-// 	for (int i = 0; i < n; i++)
-// 		data[i] = 0;
-// }
-
-// template <typename T>
-// Vector<T>::Vector(int n, int value) : size(n), codeError(0)
-// {
-// 	data = new (nothrow) int[size];
-// 	if (!data)
-// 	{
-// 		codeError = 2;
-// 		return;
-// 	}
-
-// 	for (int i = 0; i < n; i++)
-// 		data[i] = value;
-// }
-
-// template <typename T>
-// Vector<T>::Vector(const Vector &other) : size(other.size), codeError(0)
-// {
-// 	data = new (nothrow) int[size];
-// 	if (!data)
-// 	{
-// 		codeError = 2;
-// 		return;
-// 	}
-// 	for (int i = 0; i < size; i++)
-// 		data[i] = other.data[i];
-// }
-
-// template <typename T>
-// Vector<T>::~Vector() { delete[] data; }
-
-// template <typename T>
-// Vector<T> &Vector<T>::operator++()
-// {
-// 	for (int i = 0; i < size; i++)
-// 		++data[i];
-// 	return *this;
-// }
-//
-// template <typename T>
-// Vector<T> Vector<T>::operator++(int)
-// {
-// 	Vector temp(*this);
-// 	++(*this);
-// 	return temp;
-// }
-
-// template <typename T>
-// Vector<T> &Vector<T>::operator--()
-// {
-// 	for (int i = 0; i < size; ++i)
-// 		--data[i];
-// 	return *this;
-// }
-
-// template <typename T>
-// Vector<T> Vector<T>::operator--(int)
-// {
-// 	Vector temp(*this);
-// 	--(*this);
-// 	return temp;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator--(int)
+{
+	Vector temp(*this);
+	--(*this);
+	return temp;
+}
 
 // template <typename T>
 // bool Vector<T>::operator!() const
@@ -374,10 +316,10 @@ void Vector<T>::print() const
 // 	return temp;
 // }
 
-// template <typename T>
-// void Vector<T>::print() const
-// {
-// 	for (int i = 0; i < size; ++i)
-// 		cout << data[i] << " ";
-// 	cout << endl;
-// }
+template <typename T>
+void Vector<T>::print() const
+{
+	for (size_t i = 0; i < size; i++)
+		cout << data[i] << " ";
+	cout << endl;
+}

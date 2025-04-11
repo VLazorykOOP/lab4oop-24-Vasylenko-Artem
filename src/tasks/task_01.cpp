@@ -51,29 +51,26 @@ using namespace std;
 
 void task_01()
 {
-	Vector<int> v1(5);
+	Vector<int> v1;
 	v1.print();
 
-	// VectorInt v1;
-	// v1.print();
+	Vector<int> v2(5);
+	v2.print();
 
-	// VectorInt v2(5);
-	// v2.print();
+	Vector<double> v3(5, 2.5);
+	v3.print();
 
-	// VectorInt v3(5, 2);
-	// v3.print();
+	Vector<double> v4(v3);
+	v4.print();
 
-	// VectorInt v4(v3);
-	// v4.print();
+	++v4;
+	v4.print();
 
-	// ++v4;
-	// v4.print();
+	v4++;
+	v4.print();
 
-	// v4++;
-	// v4.print();
-
-	// --v4;
-	// v4.print();
+	--v4;
+	v4.print();
 
 	// cout << "!v1: " << (!v1 ? "true" : "false") << endl;
 	// cout << "!v2: " << (!v2 ? "true" : "false") << endl;
