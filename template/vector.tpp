@@ -1,4 +1,4 @@
-#include "vector.hpp"
+#include "vector.h"
 
 using namespace std;
 
@@ -6,10 +6,7 @@ template <typename T>
 Vector<T>::Vector() : size(1) { data = new T[size]; }
 
 template <typename T>
-Vector<T>::Vector(size_t n) : size(n)
-{
-	data = new T[size];
-}
+Vector<T>::Vector(size_t n) : size(n) { data = new T[size]; }
 
 template <typename T>
 Vector<T>::Vector(size_t n, T value) : size(n)
@@ -49,7 +46,7 @@ Vector<T> Vector<T>::operator++(int)
 template <typename T>
 Vector<T> &Vector<T>::operator--()
 {
-	for (int i = 0; i < size; ++i)
+	for (size_t i = 0; i < size; ++i)
 		--data[i];
 	return *this;
 }
@@ -62,259 +59,259 @@ Vector<T> Vector<T>::operator--(int)
 	return temp;
 }
 
-// template <typename T>
-// bool Vector<T>::operator!() const
-// {
-// 	if (size == 0)
-// 		return true;
+template <typename T>
+bool Vector<T>::operator!() const
+{
+	if (size == 0)
+		return true;
 
-// 	for (int i = 0; i < size; i++)
-// 		if (data[i] != 0)
-// 			return false;
+	for (size_t i = 0; i < size; i++)
+		if (data[i] != 0)
+			return false;
 
-// 	return true;
-// }
+	return true;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator~()
-// {
-// 	for (int i = 0; i < size; i++)
-// 		data[i] = ~data[i];
-// 	return *this;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator~()
+{
+	for (size_t i = 0; i < size; i++)
+		data[i] = ~data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> &Vector<T>::operator-()
-// {
-// 	for (int i = 0; i < size; i++)
-// 		data[i] = -data[i];
-// 	return *this;
-// }
+template <typename T>
+Vector<T> &Vector<T>::operator-()
+{
+	for (size_t i = 0; i < size; i++)
+		data[i] = -data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> &Vector<T>::operator=(const Vector &other)
-// {
-// 	if (this != &other)
-// 	{
-// 		delete[] data;
-// 		size = other.size;
-// 		data = new (nothrow) int[size];
-// 		if (!data)
-// 		{
-// 			codeError = 2;
-// 			return *this;
-// 		}
-// 		for (int i = 0; i < size; i++)
-// 			data[i] = other.data[i];
-// 	}
-// 	return *this;
-// }
+template <typename T>
+Vector<T> &Vector<T>::operator=(const Vector &other)
+{
+	if (this != &other)
+	{
+		delete[] data;
+		size = other.size;
+		data = new (nothrow) int[size];
+		if (!data)
+		{
+			codeError = 2;
+			return *this;
+		}
+		for (size_t i = 0; i < size; i++)
+			data[i] = other.data[i];
+	}
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator+=(const Vector &other)
-// {
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return *this;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator+=(const Vector &other)
+{
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return *this;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		data[i] += other.data[i];
-// 	return *this;
-// }
+	for (size_t i = 0; i < size; i++)
+		data[i] += other.data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator-=(const Vector &other)
-// {
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return *this;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator-=(const Vector &other)
+{
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return *this;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		data[i] -= other.data[i];
-// 	return *this;
-// }
+	for (int i = 0; i < size; i++)
+		data[i] -= other.data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator*=(const int &other)
-// {
-// 	for (int i = 0; i < size; i++)
-// 		data[i] *= other;
-// 	return *this;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator*=(const int &other)
+{
+	for (int i = 0; i < size; i++)
+		data[i] *= other;
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator/=(const int &other)
-// {
-// 	for (int i = 0; i < size; i++)
-// 		data[i] /= other;
-// 	return *this;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator/=(const int &other)
+{
+	for (int i = 0; i < size; i++)
+		data[i] /= other;
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator%=(const int &other)
-// {
-// 	for (int i = 0; i < size; i++)
-// 		data[i] %= other;
-// 	return *this;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator%=(const int &other)
+{
+	for (int i = 0; i < size; i++)
+		data[i] %= other;
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator|=(const Vector &other)
-// {
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return *this;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator|=(const Vector &other)
+{
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return *this;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		data[i] |= other.data[i];
-// 	return *this;
-// }
+	for (int i = 0; i < size; i++)
+		data[i] |= other.data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator^=(const Vector &other)
-// {
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return *this;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator^=(const Vector &other)
+{
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return *this;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		data[i] ^= other.data[i];
-// 	return *this;
-// }
+	for (int i = 0; i < size; i++)
+		data[i] ^= other.data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator&=(const Vector &other)
-// {
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return *this;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator&=(const Vector &other)
+{
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return *this;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		data[i] &= other.data[i];
-// 	return *this;
-// }
+	for (int i = 0; i < size; i++)
+		data[i] &= other.data[i];
+	return *this;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator+(const Vector &other)
-// {
-// 	Vector temp(size);
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return temp;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator+(const Vector &other)
+{
+	Vector temp(size);
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return temp;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] + other.data[i];
-// 	return temp;
-// }
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] + other.data[i];
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator-(const Vector &other)
-// {
-// 	Vector temp(size);
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return temp;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator-(const Vector &other)
+{
+	Vector temp(size);
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return temp;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] - other.data[i];
-// 	return temp;
-// }
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] - other.data[i];
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator*(const int &other)
-// {
-// 	Vector temp(size);
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] * other;
-// 	return temp;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator*(const int &other)
+{
+	Vector temp(size);
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] * other;
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator/(const int &other)
-// {
-// 	Vector temp(size);
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] / other;
-// 	return temp;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator/(const int &other)
+{
+	Vector temp(size);
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] / other;
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator%(const int &other)
-// {
-// 	Vector temp(size);
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] % other;
-// 	return temp;
-// }
+template <typename T>
+Vector<T> Vector<T>::operator%(const int &other)
+{
+	Vector temp(size);
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] % other;
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator|(const Vector &other)
-// {
-// 	Vector temp(size);
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return temp;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator|(const Vector &other)
+{
+	Vector temp(size);
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return temp;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] | other.data[i];
-// 	return temp;
-// }
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] | other.data[i];
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator^(const Vector &other)
-// {
-// 	Vector temp(size);
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return temp;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator^(const Vector &other)
+{
+	Vector temp(size);
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return temp;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] ^ other.data[i];
-// 	return temp;
-// }
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] ^ other.data[i];
+	return temp;
+}
 
-// template <typename T>
-// Vector<T> Vector<T>::operator&(const Vector &other)
-// {
-// 	Vector temp(size);
-// 	if (size != other.size)
-// 	{
-// 		codeError = 1;
-// 		cout << "Vector sizes are not equal" << endl;
-// 		return temp;
-// 	}
+template <typename T>
+Vector<T> Vector<T>::operator&(const Vector &other)
+{
+	Vector temp(size);
+	if (size != other.size)
+	{
+		codeError = 1;
+		cout << "Vector sizes are not equal" << endl;
+		return temp;
+	}
 
-// 	for (int i = 0; i < size; i++)
-// 		temp.data[i] = data[i] & other.data[i];
-// 	return temp;
-// }
+	for (int i = 0; i < size; i++)
+		temp.data[i] = data[i] & other.data[i];
+	return temp;
+}
 
 template <typename T>
 void Vector<T>::print() const

@@ -54,6 +54,18 @@
 		"vector": "cpp",
 		"algorithm": "cpp",
 		"__config": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"__assertion_handler": "cpp",
+		"atomic": "cpp",
+		"bit": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"exception": "cpp",
+		"iterator": "cpp",
+		"type_traits": "cpp",
+		"format": "cpp",
+		"functional": "cpp",
+		"system_error": "cpp",
+		"utility": "cpp"
 	}
 }

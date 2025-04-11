@@ -2,7 +2,7 @@
 
 #include "console.h"
 #include "taskManager.h"
-#include "vector.hpp"
+#include "vector.h"
 
 // Створити тип даних - клас VectorInt(вектор цілих чисел), який має вказівник на int,
 // число елементів size і змінну стану codeError.У класі визначити
@@ -54,13 +54,13 @@ void task_01()
 	Vector<int> v1;
 	v1.print();
 
-	Vector<int> v2(5);
+	Vector<double> v2(5, 1.12);
 	v2.print();
 
-	Vector<double> v3(5, 2.5);
+	Vector<int> v3(5, 2);
 	v3.print();
 
-	Vector<double> v4(v3);
+	Vector<int> v4(v3);
 	v4.print();
 
 	++v4;
@@ -72,58 +72,58 @@ void task_01()
 	--v4;
 	v4.print();
 
-	// cout << "!v1: " << (!v1 ? "true" : "false") << endl;
-	// cout << "!v2: " << (!v2 ? "true" : "false") << endl;
-	// cout << "!v4: " << (!v4 ? "true" : "false") << endl;
+	cout << "!v1: " << (!v1 ? "true" : "false") << endl;
+	cout << "!v2: " << (!v2 ? "true" : "false") << endl;
+	cout << "!v4: " << (!v4 ? "true" : "false") << endl;
 
-	// ~v4;
-	// v4.print();
+	~v4;
+	v4.print();
 
-	// -v4;
-	// v4.print();
+	-v4;
+	v4.print();
 
-	// VectorInt v5;
-	// v5 = v4;
-	// v5.print();
+	Vector<int> v5;
+	v5 = v4;
+	v5.print();
 
-	// v5 += v1;
-	// v5.print();
+	v5 += v1;
+	v5.print();
 
-	// v5 += v3;
-	// cout << "v5 += v3: " << endl;
-	// v5.print();
+	v5 += v3;
+	cout << "v5 += v3: " << endl;
+	v5.print();
 
-	// v5 -= v3;
-	// cout << "v5 -= v3: " << endl;
-	// v5.print();
+	v5 -= v3;
+	cout << "v5 -= v3: " << endl;
+	v5.print();
 
-	// v5 *= 2;
-	// cout << "v5 *= 2: " << endl;
-	// v5.print();
+	v5 *= 2;
+	cout << "v5 *= 2: " << endl;
+	v5.print();
 
-	// v5 /= 2;
-	// cout << "v5 /= 2: " << endl;
-	// v5.print();
+	v5 /= 2;
+	cout << "v5 /= 2: " << endl;
+	v5.print();
 
-	// v5 %= 2;
-	// cout << "v5 %= 2: " << endl;
-	// v5.print();
+	v5 %= 2;
+	cout << "v5 %= 2: " << endl;
+	v5.print();
 
-	// v5 |= v3;
-	// cout << "v5 |= v3: " << endl;
-	// v5.print();
+	v5 |= v3;
+	cout << "v5 |= v3: " << endl;
+	v5.print();
 
-	// VectorInt v6(5, 2);
-	// v6.print();
+	Vector<int> v6(5, 2);
+	v6.print();
 
-	// v5 ^= v6;
-	// cout << "v5 ^= v6: " << endl;
-	// v5.print();
+	v5 ^= v6;
+	cout << "v5 ^= v6: " << endl;
+	v5.print();
 
-	// v5 += v3;
-	// v5.print();
+	v5 += v3;
+	v5.print();
 
-	// v5 &= v3;
-	// cout << "v5 &= v2: " << endl;
-	// v5.print();
+	v5 &= v3;
+	cout << "v5 &= v2: " << endl;
+	v5.print();
 }
