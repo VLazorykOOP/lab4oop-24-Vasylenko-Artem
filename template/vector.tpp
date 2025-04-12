@@ -2,6 +2,8 @@
 
 using namespace std;
 
+VectorError vectorError[3] = {{0, "No error"}, {1, "Vector sizes are not equal"}, {2, "Not enough memory"}};
+
 template <typename T>
 Vector<T>::Vector() : size(1) { data = new T[size]; }
 
@@ -330,6 +332,36 @@ Vector<T> &Vector<T>::operator>>(const int &other)
 }
 
 template <typename T>
+ostream &operator<<(ostream &os, const Vector<T> &v)
+{
+	for (size_t i = 0; i < v.size; i++)
+		os << v.data[i] << " ";
+	return os;
+}
+
+template <typename T>
+istream &operator>>(istream &is, Vector<T> &v)
+{
+	for (size_t i = 0; i < v.size; i++)
+		is >> v.data[i];
+	return is;
+}
+
+template <typename T>
+bool Vector<T>::operator==(const Vector &other) const
+{
+	if (size != other.size)
+		return false;
+	for (size_t i = 0; i < size; i++)
+		if (data[i] != other.data[i])
+			return false;
+	return true;
+}
+
+template <typename T>
+bool Vector<T>::operator!=(const Vector &other) const { return !(*this == other); }
+
+template <typename T>
 T &Vector<T>::operator[](size_t index)
 {
 	if (index >= size)
@@ -342,15 +374,64 @@ T &Vector<T>::operator[](size_t index)
 }
 
 template <typename T>
-const T &Vector<T>::operator[](size_t index) const
+void *Vector<T>::operator new[](size_t size)
 {
-	if (index >= size)
+	// this->size = size;
+	// data = new T[size];
+}
+
+template <typename T>
+void Vector<T>::operator delete[](void *ptr)
+{
+	// delete[] ptr;
+}
+
+// template <typename T>
+// bool Vector<T>::operator>(const Vector &other) const
+// {
+// 	if (size != other.size)
+// 		return false;
+// 	for (size_t i = 0; i < size; i++)
+// 		if (data[i] <= other.data[i])
+// 			return false;
+// 	return true;
+// }
+
+// template <typename T>
+// bool Vector<T>::operator<(const Vector &other) const { return !(*this > other); }
+
+template <typename T>
+bool Vector<T>::operator<(const Vector &other) const
+{
+	size_t minSize = min(size, other.size);
+	for (size_t i = 0; i < minSize; ++i)
 	{
-		codeError = 3;
-		static T dummy{};
-		return dummy;
+		if (data[i] < other.data[i])
+			return true;
+		if (data[i] > other.data[i])
+			return false;
 	}
-	return data[index];
+	return size < other.size;
+}
+
+template <typename T>
+bool Vector<T>::operator>(const Vector &other) const { return other < *this; }
+
+template <typename T>
+bool Vector<T>::operator<=(const Vector &other) const { return !(*this > other); }
+
+template <typename T>
+bool Vector<T>::operator>=(const Vector &other) const { return !(*this < other); }
+
+template <typename T>
+size_t Vector<T>::getSize() const { return size; }
+
+template <typename T>
+void Vector<T>::empty()
+{
+	delete[] data;
+	data = nullptr;
+	size = 0;
 }
 
 template <typename T>

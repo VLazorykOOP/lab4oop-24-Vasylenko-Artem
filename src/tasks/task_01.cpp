@@ -131,7 +131,25 @@ void task_01()
 	cout << "v5 << 3: " << endl;
 	v5.print();
 
-	const int x = v5[0];
+	int x = v5.getSize();
 
 	cout << "x: " << x << endl;
+
+	v5.empty();
+
+	v5.print();
+
+	v5 = v4;
+	v5.print();
+
+	Vector v7(5, 1);
+	Vector v8(5, 2);
+
+	cout << "v7 == v8: " << (v7 == v8 ? "true" : "false") << endl;
+	cout << "v7 != v8: " << (v7 != v8 ? "true" : "false") << endl;
+
+	cout << "v7 > v8: " << (v7 > v8 ? "true" : "false") << endl;
+	cout << "v7 >= v8: " << (v7 >= v8 ? "true" : "false") << endl;
+	cout << "v7 < v8: " << (v7 < v8 ? "true" : "false") << endl;
+	cout << "v7 <= v8: " << (v7 <= v8 ? "true" : "false") << endl;
 }

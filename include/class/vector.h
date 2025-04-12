@@ -5,6 +5,14 @@
 #include "console.h"
 #include "taskManager.h"
 
+using namespace std;
+
+typedef struct
+{
+	int codeError;
+	std::string message;
+} VectorError;
+
 template <typename T>
 class Vector
 {
@@ -21,8 +29,6 @@ public:
 	Vector(const Vector &other);
 
 	~Vector();
-
-	Vector operator[](size_t index) const;
 
 	Vector &operator++();
 	Vector operator++(int);
@@ -59,8 +65,25 @@ public:
 	Vector &operator<<(const int &other);
 	Vector &operator>>(const int &other);
 
+	friend ostream &operator<<(ostream &os, const Vector<T> &v);
+	friend istream &operator>>(istream &is, Vector<T> &v);
+
+	bool operator==(const Vector &other) const;
+	bool operator!=(const Vector &other) const;
+
+	Vector operator[](size_t index) const;
 	T &operator[](size_t index);
 
+	static void *operator new[](size_t size);
+	static void operator delete[](void *ptr);
+
+	bool operator>(const Vector &other) const;
+	bool operator>=(const Vector &other) const;
+	bool operator<(const Vector &other) const;
+	bool operator<=(const Vector &other) const;
+
+	void empty();
+	size_t getSize() const;
 	void print() const;
 };
 
