@@ -18,7 +18,9 @@ public:
 	~Map();
 
 	// T &operator[](size_t pos);
-	T &operator[](const T &key);
+	// T &operator[](const T &key);
+	U &operator[](size_t index);
+	const U &operator[](size_t index) const;
 
 	// void add(size_t pos, T key, U value);
 	void push_back(T key, U value);

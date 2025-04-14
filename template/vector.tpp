@@ -125,13 +125,6 @@ Vector<T> &Vector<T>::operator=(const Vector &other)
 		}
 		for (size_t i = 0; i < size; i++)
 			data[i] = other.data[i];
-
-		cout << endl
-			 << "Copy constructor called" << endl
-			 << "Vector size: " << size << endl
-			 << "Vector capacity: " << capacity << endl
-			 << "Vector data: " << data << endl
-			 << endl;
 	}
 	return *this;
 }

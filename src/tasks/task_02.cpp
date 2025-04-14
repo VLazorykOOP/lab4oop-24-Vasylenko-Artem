@@ -61,4 +61,9 @@ void task_02()
 	}
 
 	map.print();
+
+	int index;
+	cout << "\nEnter index: ";
+	cin >> index;
+	cout << "Value: " << map[index] << endl;
 }
