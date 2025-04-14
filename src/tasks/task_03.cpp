@@ -58,5 +58,37 @@ void task_03()
 	m2++;
 	m2.print();
 
+	newLine();
+	cout << "!m2: " << (!m2 ? "true" : "false") << endl;
+
+	newLine();
+
+	~m2;
+	m2.print();
+
+	newLine();
+
+	-m2;
+	m2.print();
+
+	newLine();
+
+	m2 = m1;
+	m2.print();
+
+	newLine();
+
+	m2 += m1;
+	m2.print();
+
+	newLine();
+
+	cout << "m1 == m2: " << (m1 == m2 ? "true" : "false") << endl;
+	cout << "m1 != m2: " << (m1 != m2 ? "true" : "false") << endl;
+
+	newLine();
+
+	cout << matrixChar[0][1] << endl;
+
 	cout << "Objects: " << Matrix<int>::getTotalCount() << endl;
 }
