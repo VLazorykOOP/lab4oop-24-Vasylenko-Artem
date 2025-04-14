@@ -15,8 +15,6 @@ Matrix<T>::Matrix(size_t size) : rows(size), columns(size)
 			i == j ? data[i][j] = 1 : data[i][j] = 0;
 
 	totalCount++;
-
-	cout << "Object " << totalCount << " created" << endl;
 }
 
 template <typename T>
@@ -24,7 +22,6 @@ Matrix<T>::Matrix(size_t rows, size_t columns) : rows(rows), columns(columns)
 {
 	data = new Vector<T>[rows];
 	totalCount++;
-	cout << "Object " << totalCount << " created" << endl;
 }
 
 template <typename T>
@@ -34,7 +31,6 @@ Matrix<T>::Matrix(size_t rows, size_t columns, T value) : rows(rows), columns(co
 	for (size_t i = 0; i < rows; i++)
 		data[i] = Vector<T>(columns, value);
 	totalCount++;
-	cout << "Object " << totalCount << " created" << endl;
 }
 
 template <typename T>
@@ -44,7 +40,6 @@ Matrix<T>::Matrix(const Matrix &other) : rows(other.rows), columns(other.columns
 	for (size_t i = 0; i < rows; i++)
 		data[i] = other.data[i];
 	totalCount++;
-	cout << "Object " << totalCount << " created" << endl;
 }
 
 int MatrixBase::totalCount = 0;
@@ -54,6 +49,40 @@ Matrix<T>::~Matrix()
 {
 	delete[] data;
 	totalCount--;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator++()
+{
+	for (size_t i = 0; i < rows; i++)
+		for (size_t j = 0; j < columns; j++)
+			data[i][j]++;
+	return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator++(int)
+{
+	Matrix temp(*this);
+	++*this;
+	return temp;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator--()
+{
+	for (size_t i = 0; i < rows; i++)
+		for (size_t j = 0; j < columns; j++)
+			data[i][j]--;
+	return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator--(int)
+{
+	Matrix temp(*this);
+	--*this;
+	return temp;
 }
 
 template <typename T>

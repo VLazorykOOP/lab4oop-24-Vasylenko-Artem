@@ -32,6 +32,11 @@ public:
 
 	~Matrix();
 
+	Matrix &operator++();
+	Matrix operator++(int);
+	Matrix &operator--();
+	Matrix operator--(int);
+
 	T &operator()(size_t row, size_t column);
 	const T &operator()(size_t row, size_t column) const;
 

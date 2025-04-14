@@ -53,5 +53,10 @@ void task_03()
 	Matrix<int> m2(m1);
 	m2.print();
 
+	newLine();
+
+	m2++;
+	m2.print();
+
 	cout << "Objects: " << Matrix<int>::getTotalCount() << endl;
 }
