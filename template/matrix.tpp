@@ -545,6 +545,27 @@ const Vector<T> &Matrix<T>::operator[](size_t index) const { return data[index];
 template <typename T>
 const T &Matrix<T>::operator()(size_t row, size_t column) const { return data[row][column]; }
 
+template <typename K>
+ostream &operator<<(ostream &out, const Matrix<K> &matrix)
+{
+	for (size_t i = 0; i < matrix.rows; i++)
+	{
+		for (size_t j = 0; j < matrix.columns; j++)
+			out << matrix.data[i][j] << " ";
+		out << endl;
+	}
+	return out;
+}
+
+template <typename T>
+istream &operator>>(istream &in, Matrix<T> &matrix)
+{
+	for (size_t i = 0; i < matrix.rows; i++)
+		for (size_t j = 0; j < matrix.columns; j++)
+			in >> matrix.data[i][j];
+	return in;
+}
+
 int MatrixBase::getTotalCount() { return totalCount; }
 
 template <typename T>

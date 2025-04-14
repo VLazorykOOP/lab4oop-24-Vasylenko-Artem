@@ -92,6 +92,12 @@ public:
 	T &operator()(size_t row, size_t column);
 	const T &operator()(size_t row, size_t column) const;
 
+	template <typename K>
+	friend ostream &operator<<(ostream &out, const Matrix<K> &matrix);
+
+	template <typename K>
+	friend istream &operator>>(istream &in, Matrix<K> &matrix);
+
 	void print() const;
 };
 

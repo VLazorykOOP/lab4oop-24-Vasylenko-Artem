@@ -90,5 +90,10 @@ void task_03()
 
 	cout << matrixChar[0][1] << endl;
 
+	newLine();
+
+	cout << matrixChar << endl;
+	cout << matrix << endl;
+
 	cout << "Objects: " << Matrix<int>::getTotalCount() << endl;
 }
