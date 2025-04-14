@@ -17,9 +17,10 @@ public:
 	Map();
 	~Map();
 
-	T &operator[](size_t pos);
+	// T &operator[](size_t pos);
+	T &operator[](const T &key);
 
-	void add(size_t pos, T key, U value);
+	// void add(size_t pos, T key, U value);
 	void push_back(T key, U value);
 
 	void print();

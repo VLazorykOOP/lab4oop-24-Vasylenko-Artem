@@ -19,6 +19,7 @@ class Vector
 private:
 	T *data;
 	size_t size;
+	size_t capacity;
 	int codeError;
 	static int countObject;
 

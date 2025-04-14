@@ -3,33 +3,33 @@
 using namespace std;
 
 template <typename T>
-Vector<T>::Vector() : size(1)
+Vector<T>::Vector() : size(1), capacity(1)
 {
-	data = new T[size];
+	data = new T[capacity];
 	countObject++;
 }
 
 template <typename T>
-Vector<T>::Vector(size_t n) : size(n)
+Vector<T>::Vector(size_t n) : size(n), capacity(n)
 {
-	data = new T[size];
+	data = new T[capacity];
 	countObject++;
 }
 
 template <typename T>
-Vector<T>::Vector(size_t n, T value) : size(n)
+Vector<T>::Vector(size_t n, T value) : size(n), capacity(n)
 {
-	data = new T[size];
+	data = new T[capacity];
 	for (size_t i = 0; i < n; i++)
 		data[i] = value;
 	countObject++;
 }
 
 template <typename T>
-Vector<T>::Vector(const Vector &other) : size(other.size)
+Vector<T>::Vector(const Vector &other) : size(other.size), capacity(other.capacity)
 {
-	data = new T[size];
-	for (size_t i = 0; i < other.size; i++)
+	data = new T[capacity];
+	for (size_t i = 0; i < size; i++)
 		data[i] = other.data[i];
 }
 
@@ -40,7 +40,13 @@ template <typename T>
 int Vector<T>::getCountObject() { return countObject; }
 
 template <typename T>
-Vector<T>::~Vector() { delete[] data; }
+Vector<T>::~Vector()
+{
+	delete[] data;
+	data = nullptr;
+	size = 0;
+	capacity = 0;
+}
 
 template <typename T>
 Vector<T> &Vector<T>::operator++()
@@ -110,6 +116,7 @@ Vector<T> &Vector<T>::operator=(const Vector &other)
 	{
 		delete[] data;
 		size = other.size;
+		capacity = other.capacity;
 		data = new (nothrow) T[size];
 		if (!data)
 		{
@@ -118,6 +125,13 @@ Vector<T> &Vector<T>::operator=(const Vector &other)
 		}
 		for (size_t i = 0; i < size; i++)
 			data[i] = other.data[i];
+
+		cout << endl
+			 << "Copy constructor called" << endl
+			 << "Vector size: " << size << endl
+			 << "Vector capacity: " << capacity << endl
+			 << "Vector data: " << data << endl
+			 << endl;
 	}
 	return *this;
 }
@@ -427,7 +441,26 @@ void Vector<T>::empty()
 }
 
 template <typename T>
-void Vector<T>::push_back(T value) { data[size++] = value; }
+void Vector<T>::push_back(T value)
+{
+	if (size >= capacity)
+	{
+		size_t newCapacity = (capacity == 0) ? 1 : capacity * 2;
+		T *newData = new (nothrow) T[newCapacity];
+		if (!newData)
+		{
+			codeError = 2;
+			return;
+		}
+		for (size_t i = 0; i < size; ++i)
+			newData[i] = data[i];
+		delete[] data;
+		data = newData;
+		capacity = newCapacity;
+	}
+
+	data[size++] = value;
+}
 
 template <typename T>
 void Vector<T>::print() const
