@@ -67,8 +67,11 @@ public:
 	Vector &operator<<(const int &other);
 	Vector &operator>>(const int &other);
 
-	friend ostream &operator<<(ostream &os, const Vector<T> &v);
-	friend istream &operator>>(istream &is, Vector<T> &v);
+	template <typename U>
+	friend ostream &operator<<(ostream &os, const Vector<U> &v);
+
+	template <typename U>
+	friend istream &operator>>(istream &is, Vector<U> &v);
 
 	bool operator==(const Vector &other) const;
 	bool operator!=(const Vector &other) const;

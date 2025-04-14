@@ -131,6 +131,8 @@ void task_01()
 	cout << "v5 << 3: " << endl;
 	v5.print();
 
+	cout << "cout << v5: " << v5 << endl;
+
 	int x = v5.getSize();
 
 	cout << "x: " << x << endl;

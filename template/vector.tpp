@@ -351,16 +351,16 @@ Vector<T> &Vector<T>::operator>>(const int &other)
 	return *this;
 }
 
-template <typename T>
-ostream &operator<<(ostream &os, const Vector<T> &v)
+template <typename U>
+ostream &operator<<(ostream &os, const Vector<U> &v)
 {
 	for (size_t i = 0; i < v.size; i++)
 		os << v.data[i] << " ";
 	return os;
 }
 
-template <typename T>
-istream &operator>>(istream &is, Vector<T> &v)
+template <typename U>
+istream &operator>>(istream &is, Vector<U> &v)
 {
 	for (size_t i = 0; i < v.size; i++)
 		is >> v.data[i];
@@ -382,16 +382,10 @@ template <typename T>
 bool Vector<T>::operator!=(const Vector &other) const { return !(*this == other); }
 
 template <typename T>
-T &Vector<T>::operator[](size_t index)
-{
-	if (index >= size)
-	{
-		codeError = 3;
-		static T dummy{};
-		return dummy;
-	}
-	return data[index];
-}
+T &Vector<T>::operator[](size_t index) { return data[index]; }
+
+template <typename T>
+const T &Vector<T>::operator[](size_t index) const { return data[index]; }
 
 template <typename T>
 void *Vector<T>::operator new[](size_t size) { return ::operator new[](size); }

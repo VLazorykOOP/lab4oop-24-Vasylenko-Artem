@@ -62,6 +62,13 @@ void task_02()
 
 	map.print();
 
+	newLine();
+
+	cout << "cout << map: " << map << endl;
+	cout << "cout << map: " << map[0] << endl;
+
+	newLine();
+
 	int index;
 	cout << "\nEnter index: ";
 	cin >> index;

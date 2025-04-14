@@ -17,13 +17,16 @@ public:
 	Map();
 	~Map();
 
-	// T &operator[](size_t pos);
-	// T &operator[](const T &key);
 	U &operator[](size_t index);
 	const U &operator[](size_t index) const;
 
-	// void add(size_t pos, T key, U value);
 	void push_back(T key, U value);
+
+	template <typename K, typename M>
+	friend ostream &operator<<(ostream &os, const Map<K, M> &map);
+
+	template <typename K, typename M>
+	friend istream &operator>>(istream &is, Map<K, M> &map);
 
 	void print();
 };
