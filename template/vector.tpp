@@ -374,31 +374,10 @@ T &Vector<T>::operator[](size_t index)
 }
 
 template <typename T>
-void *Vector<T>::operator new[](size_t size)
-{
-	// this->size = size;
-	// data = new T[size];
-}
+void *Vector<T>::operator new[](size_t size) { return ::operator new[](size); }
 
 template <typename T>
-void Vector<T>::operator delete[](void *ptr)
-{
-	// delete[] ptr;
-}
-
-// template <typename T>
-// bool Vector<T>::operator>(const Vector &other) const
-// {
-// 	if (size != other.size)
-// 		return false;
-// 	for (size_t i = 0; i < size; i++)
-// 		if (data[i] <= other.data[i])
-// 			return false;
-// 	return true;
-// }
-
-// template <typename T>
-// bool Vector<T>::operator<(const Vector &other) const { return !(*this > other); }
+void Vector<T>::operator delete[](void *ptr) { ::operator delete[](ptr); }
 
 template <typename T>
 bool Vector<T>::operator<(const Vector &other) const

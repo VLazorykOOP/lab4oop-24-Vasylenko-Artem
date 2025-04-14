@@ -71,8 +71,8 @@ public:
 	bool operator==(const Vector &other) const;
 	bool operator!=(const Vector &other) const;
 
-	Vector operator[](size_t index) const;
 	T &operator[](size_t index);
+	const T &operator[](size_t index) const;
 
 	static void *operator new[](size_t size);
 	static void operator delete[](void *ptr);

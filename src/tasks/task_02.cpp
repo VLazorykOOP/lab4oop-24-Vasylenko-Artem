@@ -2,7 +2,7 @@
 
 #include "console.h"
 #include "taskManager.h"
-// #include "vector.h"
+#include "class/map.h"
 
 // Побудувати асоційований клас збереження
 // двох сутностей.В завданні створити клас,
@@ -19,4 +19,7 @@ using namespace std;
 
 void task_02()
 {
+	// Map<int, string> map;
+
+	// map.add();
 }
