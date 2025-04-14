@@ -37,4 +37,9 @@ void task_03()
 	matrix(2, 2) = 9;
 
 	matrix.print();
+
+	newLine();
+
+	Matrix<int> E(5);
+	E.print();
 }

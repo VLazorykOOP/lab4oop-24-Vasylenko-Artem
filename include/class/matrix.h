@@ -14,6 +14,7 @@ private:
 
 public:
 	Matrix();
+	Matrix(size_t size); // E
 	Matrix(size_t rows, size_t columns);
 	~Matrix();
 	T &operator()(size_t row, size_t column);
