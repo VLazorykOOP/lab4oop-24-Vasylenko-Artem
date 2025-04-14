@@ -3,6 +3,7 @@
 #include "console.h"
 #include "taskManager.h"
 #include "class/map.h"
+#include <vector>
 
 // Побудувати асоційований клас збереження
 // двох сутностей.В завданні створити клас,
@@ -19,7 +20,45 @@ using namespace std;
 
 void task_02()
 {
-	// Map<int, string> map;
+	static const vector<string> ones = {
+		"zero", "one", "two", "three", "four",
+		"five", "six", "seven", "eight", "nine"};
 
-	// map.add();
+	static const vector<string> teens = {
+		"ten", "eleven", "twelve", "thirteen", "fourteen",
+		"fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+
+	static const vector<string> tens = {
+		"twenty", "thirty", "forty", "fifty",
+		"sixty", "seventy", "eighty", "ninety"};
+
+	Map<int, string> map;
+
+	for (int i = 0; i <= 100; i++)
+	{
+		string str;
+
+		if (i < 10)
+		{
+			str = ones[i];
+		}
+		else if (i >= 10 && i < 20)
+		{
+			str = teens[i - 10];
+		}
+		else if (i < 100)
+		{
+			str = tens[i / 10 - 2];
+			if (i % 10 != 0)
+				str += "-" + ones[i % 10];
+		}
+		else if (i == 100)
+		{
+			str = "one hundred";
+		}
+
+		map.push_back(i, str);
+	}
+
+	map.print();
 }

@@ -1,21 +1,22 @@
 #pragma once
 
-// #include "class/vector.h"
+#include <vector>
+
+using namespace std;
 
 template <typename T, typename U>
 class Map
 {
 private:
-	size_t size;
-	// Vector<T> keys;
-	// Vector<U> values;
+	vector<T> keys;
+	vector<U> values;
 
 public:
 	Map();
-	Map(size_t size);
 	~Map();
 
-	// void add(size_t position, );
+	void add(size_t pos, T key, U value);
+	void push_back(T key, U value);
 
 	void print();
 };

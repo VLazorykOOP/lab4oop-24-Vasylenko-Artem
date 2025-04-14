@@ -20,6 +20,7 @@ private:
 	T *data;
 	size_t size;
 	int codeError;
+	static int countObject;
 
 public:
 	Vector();
@@ -84,6 +85,7 @@ public:
 
 	void empty();
 	size_t getSize() const;
+	static int getCountObject();
 	void print() const;
 };
 

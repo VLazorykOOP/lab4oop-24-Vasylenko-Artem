@@ -66,6 +66,7 @@
 		"format": "cpp",
 		"functional": "cpp",
 		"system_error": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"version": "cpp"
 	}
 }
