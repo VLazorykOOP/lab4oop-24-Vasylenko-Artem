@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include "vector.h"
 
 using namespace std;
@@ -9,8 +8,9 @@ template <typename T, typename U>
 class Map
 {
 private:
-	vector<T> keys;
-	vector<U> values;
+	Vector<T> keys;
+	Vector<U> values;
+	size_t size;
 	int codeError;
 
 public:

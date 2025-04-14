@@ -86,6 +86,7 @@ public:
 	void empty();
 	size_t getSize() const;
 	static int getCountObject();
+	void push_back(T value);
 	void print() const;
 };
 

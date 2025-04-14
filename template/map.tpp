@@ -3,13 +3,17 @@
 using namespace std;
 
 template <class T, class U>
-Map<T, U>::Map() {}
+Map<T, U>::Map() : size(0)
+{
+	keys = Vector<T>(size);
+	values = Vector<U>(size);
+}
 
 template <class T, class U>
 Map<T, U>::~Map()
 {
-	keys.clear();
-	values.clear();
+	keys.empty();
+	values.empty();
 }
 
 template <class T, class U>
@@ -36,6 +40,6 @@ void Map<T, U>::push_back(T key, U value)
 template <class T, class U>
 void Map<T, U>::print()
 {
-	for (size_t i = 0; i < keys.size(); i++)
+	for (size_t i = 0; i < keys.getSize(); i++)
 		cout << "Key: " << keys[i] << " - Value: " << values[i] << endl;
 }

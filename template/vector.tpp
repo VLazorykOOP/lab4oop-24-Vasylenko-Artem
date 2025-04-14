@@ -7,7 +7,6 @@ Vector<T>::Vector() : size(1)
 {
 	data = new T[size];
 	countObject++;
-	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -15,7 +14,6 @@ Vector<T>::Vector(size_t n) : size(n)
 {
 	data = new T[size];
 	countObject++;
-	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -25,7 +23,6 @@ Vector<T>::Vector(size_t n, T value) : size(n)
 	for (size_t i = 0; i < n; i++)
 		data[i] = value;
 	countObject++;
-	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -34,7 +31,6 @@ Vector<T>::Vector(const Vector &other) : size(other.size)
 	data = new T[size];
 	for (size_t i = 0; i < other.size; i++)
 		data[i] = other.data[i];
-	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -114,7 +110,7 @@ Vector<T> &Vector<T>::operator=(const Vector &other)
 	{
 		delete[] data;
 		size = other.size;
-		data = new (nothrow) int[size];
+		data = new (nothrow) T[size];
 		if (!data)
 		{
 			codeError = 2;
@@ -429,6 +425,9 @@ void Vector<T>::empty()
 	data = nullptr;
 	size = 0;
 }
+
+template <typename T>
+void Vector<T>::push_back(T value) { data[size++] = value; }
 
 template <typename T>
 void Vector<T>::print() const
