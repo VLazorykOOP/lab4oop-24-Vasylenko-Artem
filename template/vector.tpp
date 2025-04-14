@@ -2,13 +2,12 @@
 
 using namespace std;
 
-VectorError vectorError[3] = {{0, "No error"}, {1, "Vector sizes are not equal"}, {2, "Not enough memory"}};
-
 template <typename T>
 Vector<T>::Vector() : size(1)
 {
 	data = new T[size];
 	countObject++;
+	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -16,6 +15,7 @@ Vector<T>::Vector(size_t n) : size(n)
 {
 	data = new T[size];
 	countObject++;
+	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -25,6 +25,7 @@ Vector<T>::Vector(size_t n, T value) : size(n)
 	for (size_t i = 0; i < n; i++)
 		data[i] = value;
 	countObject++;
+	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -33,7 +34,7 @@ Vector<T>::Vector(const Vector &other) : size(other.size)
 	data = new T[size];
 	for (size_t i = 0; i < other.size; i++)
 		data[i] = other.data[i];
-	countObject++;
+	cout << "Object(s): " << Vector<int>::getCountObject() << endl;
 }
 
 template <typename T>
@@ -43,11 +44,7 @@ template <typename T>
 int Vector<T>::getCountObject() { return countObject; }
 
 template <typename T>
-Vector<T>::~Vector()
-{
-	delete[] data;
-	countObject--;
-}
+Vector<T>::~Vector() { delete[] data; }
 
 template <typename T>
 Vector<T> &Vector<T>::operator++()

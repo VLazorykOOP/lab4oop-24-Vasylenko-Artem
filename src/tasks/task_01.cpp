@@ -69,7 +69,6 @@ void task_01()
 	v4++;
 	v4.print();
 
-	cout << v4.getCountObject() << endl;
 	--v4;
 	v4.print();
 
@@ -154,12 +153,8 @@ void task_01()
 	cout << "v7 < v8: " << (v7 < v8 ? "true" : "false") << endl;
 	cout << "v7 <= v8: " << (v7 <= v8 ? "true" : "false") << endl;
 
-	cout << v8.getCountObject() << endl;
-
 	Vector<int> *v = new Vector<int>[2];
-	v[0].print();
 	v[1].print();
+	v[0].print();
 	delete[] v;
-
-	cout << v8.getCountObject() << endl;
 }

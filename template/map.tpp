@@ -13,6 +13,13 @@ Map<T, U>::~Map()
 }
 
 template <class T, class U>
+T &Map<T, U>::operator[](size_t pos)
+{
+	// if (pos >= keys.size() ||)
+	return keys[pos];
+}
+
+template <class T, class U>
 void Map<T, U>::add(size_t pos, T key, U value)
 {
 	keys[pos] = key;
